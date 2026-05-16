@@ -8,7 +8,7 @@ import SmtpTester from './components/SmtpTester';
 // with your actual Render backend URL. Example:
 // https://sitediag-backend.onrender.com
 // ─────────────────────────────────────────────────────────────────────────────
-export const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+export const BACKEND_URL = 'https://sitediag-backend-production.up.railway.app';;
 
 const TABS = [
   { id: 'website', label: '🌐 Website', desc: 'Check why your site is down' },
