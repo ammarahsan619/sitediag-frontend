@@ -42,27 +42,7 @@ export default function EmailChecker() {
       setChecks(data.checks);
       if (data.checks.mx?.records?.length > 0) setMxRecords(data.checks.mx.records);
 
-      // AI summary
-      setAiLoading(true);
-      const summary = Object.entries(data.checks)
-        .map(([k, v]) => `${k.toUpperCase()}: ${v.status} — ${v.detail}`)
-        .join('\n');
 
-      const domain = val.includes('@') ? val.split('@')[1] : val;
-      const aiRes = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [{
-            role: 'user',
-            content: `You are an email deliverability expert. A user checked email config for "${domain}" and got:\n\n${summary}\n\nIn 3-4 sentences of plain English, explain why their emails may not be working or going to spam, and the single most important fix. Be specific.`
-          }]
-        })
-      });
-      const aiData = await aiRes.json();
-      setAiText(aiData.content?.[0]?.text || 'Could not generate summary.');
     } catch (e) {
       setChecks({ mx: { status: 'warn', detail: 'Could not reach backend.' } });
       setAiText('Could not connect to the diagnostic server.');

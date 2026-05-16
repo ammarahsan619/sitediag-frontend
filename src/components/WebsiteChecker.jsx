@@ -41,26 +41,7 @@ export default function WebsiteChecker() {
       const data = await res.json();
       setChecks(data.checks);
 
-      // AI summary
-      setAiLoading(true);
-      const summary = Object.entries(data.checks)
-        .map(([k, v]) => `${k.toUpperCase()}: ${v.status} — ${v.detail}`)
-        .join('\n');
 
-      const aiRes = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [{
-            role: 'user',
-            content: `You are a website diagnostic expert. A user checked domain "${d}" and got:\n\n${summary}\n\nIn 3-4 sentences of plain English (no jargon), explain what the main issue is, why it's causing their website to not work, and what the single most important action to fix it is. Be direct and specific.`
-          }]
-        })
-      });
-      const aiData = await aiRes.json();
-      setAiText(aiData.content?.[0]?.text || 'Could not generate summary.');
     } catch (e) {
       setChecks({
         dns:   { status: 'warn', detail: 'Could not reach backend. Make sure backend is running.' },
