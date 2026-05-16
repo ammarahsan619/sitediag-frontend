@@ -15,7 +15,7 @@ export default function CheckCard({ icon, title, status = 'idle', detail, fix })
     <div style={{
       background: '#fff',
       border: '1px solid var(--border)',
-      borderRadius: 'var(--radius)',
+      borderRadius: '10px',
       padding: '14px 16px',
       display: 'flex',
       flexDirection: 'column',
