@@ -1,57 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black: #0a0a0a;
-  --white: #ffffff;
-  --off-white: #f7f6f3;
-  --cream: #f0ede6;
-  --accent: #e84a2e;
-  --accent-dark: #c73d24;
-  --accent-light: #fff3f0;
-  --green: #166534;
+  --bg: #ffffff;
+  --bg-2: #f9f9f8;
+  --bg-3: #f3f2ef;
+  --border: #e8e6e1;
+  --border-2: #d4d1cb;
+  --text: #111110;
+  --text-2: #6b6966;
+  --text-3: #a8a5a0;
+  --accent: #ff4d1c;
+  --accent-2: #e63d0e;
+  --accent-bg: #fff3ef;
+  --green: #16a34a;
   --green-bg: #f0fdf4;
-  --yellow: #92400e;
+  --green-border: #bbf7d0;
+  --yellow: #b45309;
   --yellow-bg: #fffbeb;
-  --red: #991b1b;
+  --yellow-border: #fde68a;
+  --red: #dc2626;
   --red-bg: #fef2f2;
-  --gray-100: #f5f4f1;
-  --gray-200: #e8e6e1;
-  --gray-300: #d4d1cb;
-  --gray-500: #8a8880;
-  --gray-700: #4a4845;
-  --gray-900: #1a1917;
-  --border: #e2dfd8;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-  --shadow-sm: 0 1px 3px rgba(10,10,10,0.06);
-  --shadow-md: 0 4px 16px rgba(10,10,10,0.08);
-  --shadow-lg: 0 12px 40px rgba(10,10,10,0.12);
+  --red-border: #fecaca;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
 }
 
 body {
-  font-family: var(--font-body);
-  background: var(--white);
-  color: var(--gray-900);
-  line-height: 1.6;
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
 }
 
-::selection { background: var(--accent); color: var(--white); }
-input, button { font-family: var(--font-body); }
+::selection { background: var(--accent); color: #fff; }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-.animate-1 { animation: fadeUp 0.6s cubic-bezier(0.4,0,0.2,1) 0.0s both; }
-.animate-2 { animation: fadeUp 0.6s cubic-bezier(0.4,0,0.2,1) 0.1s both; }
-.animate-3 { animation: fadeUp 0.6s cubic-bezier(0.4,0,0.2,1) 0.2s both; }
-.animate-4 { animation: fadeUp 0.6s cubic-bezier(0.4,0,0.2,1) 0.3s both; }
+.a1 { animation: fadeUp 0.5s cubic-bezier(0.4,0,0.2,1) 0.05s both; }
+.a2 { animation: fadeUp 0.5s cubic-bezier(0.4,0,0.2,1) 0.12s both; }
+.a3 { animation: fadeUp 0.5s cubic-bezier(0.4,0,0.2,1) 0.20s both; }
+.a4 { animation: fadeUp 0.5s cubic-bezier(0.4,0,0.2,1) 0.28s both; }
+.a5 { animation: fadeUp 0.5s cubic-bezier(0.4,0,0.2,1) 0.36s both; }

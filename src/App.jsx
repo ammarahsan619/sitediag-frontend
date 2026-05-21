@@ -6,21 +6,16 @@ import './index.css';
 export const BACKEND_URL = 'https://sitediag-backend-production.up.railway.app';
 
 export default function App() {
-  const [showTool, setShowTool] = useState(false);
-  const [initialDomain, setInitialDomain] = useState('');
+  const [view, setView] = useState('landing');
+  const [seedDomain, setSeedDomain] = useState('');
 
-  function handleLaunch(domain = '') {
-    setInitialDomain(domain);
-    setShowTool(true);
-    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+  function goToTool(domain = '') {
+    setSeedDomain(domain);
+    setView('tool');
+    window.scrollTo({ top: 0 });
   }
 
-  function handleBack() {
-    setShowTool(false);
-    setInitialDomain('');
-  }
-
-  return showTool
-    ? <DiagnosticTool initialDomain={initialDomain} onBack={handleBack} />
-    : <LandingPage onLaunch={handleLaunch} />;
+  return view === 'tool'
+    ? <DiagnosticTool seed={seedDomain} onBack={() => setView('landing')} />
+    : <LandingPage onLaunch={goToTool} />;
 }
