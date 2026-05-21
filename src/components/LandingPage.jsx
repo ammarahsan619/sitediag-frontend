@@ -102,7 +102,7 @@ function TerminalHero() {
           {lines.map((l, i) => (
             <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'baseline' }}>
               <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--text-3)', minWidth: 18 }}>{String(i + 1).padStart(2, '0')}</span>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 12, color: l.color, lineHeight: 1.6 }}>{l.text}</span>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 12, color: l?.color || 'var(--text-2)', lineHeight: 1.6 }}>{l?.text || ''}</span>
             </div>
           ))}
           {running && lines.length > 0 && (
