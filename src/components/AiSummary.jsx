@@ -28,4 +28,4 @@ export default function AiSummary({ text, loading }) {
       )}
     </div>
   );
-}
+} 
